@@ -1,8 +1,9 @@
 import { styled } from "styled-components";
 import { motion } from "framer-motion";
 
-// wrapper
+// -------------------- wrapper --------------------
 export const Wrap = styled.div`
+  overflow-x: hidden;
   width: 100%;
   min-height: 100vh;
   background: ${(props) => props.theme.bgColor.normal};
@@ -10,8 +11,8 @@ export const Wrap = styled.div`
 `;
 
 
-// header
-export const HeaderWrap = styled.header`
+// -------------------- header --------------------
+export const HeaderWrap = styled(motion.header)`
   display: flex;
   justify-content: space-beteen;  
   align-items: center;
@@ -47,6 +48,8 @@ export const Gnb = styled.nav`
       }
       &.active {
         color: ${(props) => props.theme.textColor.active};
+        font-weight: bold;
+        pointer-events: none;
       }
     }
   }
@@ -57,7 +60,7 @@ export const Etc = styled.ul`
 `;
 
 
-// container
+// -------------------- container --------------------
 export const ContainerWrap = styled.div`
   width: 100%;
   height: 100%;

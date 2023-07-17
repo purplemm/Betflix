@@ -1,22 +1,34 @@
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { createBrowserRouter } from "react-router-dom";
 
 import Wrapper from "layouts/Wrapper";
 import Home from "pages/Home";
-import Movies from "pages/Movies";
+import Series from "pages/Series";
 import NotFound from "pages/NotFound";
+
+const client = new QueryClient();
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Wrapper />,
+    element: 
+      <QueryClientProvider client={client}>
+        <Wrapper />
+      </QueryClientProvider>,
     children: [
       {
         path: "/",
         element: <Home />,
+        children: [
+          {
+            path: "/movies/:movieId",
+            element: <></>
+          }
+        ]
       },
       {
-        path: "/movies",
-        element: <Movies />,
+        path: "/series",
+        element: <Series />,
       }
     ],
     errorElement: <NotFound />

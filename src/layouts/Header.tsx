@@ -1,4 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useMotionValueEvent, useAnimation, useScroll } from "framer-motion";
+
 import { useRecoilState } from "recoil";
 
 import SearchBar from "components/SearchBar";
@@ -9,8 +11,20 @@ import { gnb } from "data/gnb";
 import logoUrl from "assets/images/logo_betflix.svg";
 import * as S from "assets/styles/layoutStyle";
 
+const headerAniVariants = {
+  top: {
+    backgroundColor: "rgba(0, 0, 0, 0)"
+  },
+  scroll: {
+    backgroundColor: "rgba(0, 0, 0, 1)"
+  }
+}
+
 function Header() {
   const navigate = useNavigate();
+
+  const { scrollY } = useScroll();
+  const headerAnimation = useAnimation();
 
   const [isActive, setIsActive] = useRecoilState(gnbIsActive);
 
@@ -25,8 +39,20 @@ function Header() {
     }
   }
 
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if(scrollY.get() > 60) {
+      headerAnimation.start("scroll");
+    }else {
+      headerAnimation.start("top");
+    }
+  });
+
   return (
-    <S.HeaderWrap>
+    <S.HeaderWrap
+      variants={headerAniVariants}
+      animate={headerAnimation}
+      initial="top"
+    >
       <S.Logo onClick={moveHome}>
         <img src={logoUrl} alt="BETFLIX Logo" />
       </S.Logo>

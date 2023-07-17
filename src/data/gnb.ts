@@ -4,7 +4,7 @@ export const gnb = [
     name: "Home"
   },
   {
-    path: "/movies",
-    name: "Movies"
+    path: "/series",
+    name: "Series"
   }
 ]
