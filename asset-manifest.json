@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.js": "/betflix/static/js/main.34ed79ad.js",
+    "static/media/logo_betflix.svg": "/betflix/static/media/logo_betflix.c734803920d2962199f897d67d702758.svg",
+    "index.html": "/betflix/index.html",
+    "static/media/ico_search.svg": "/betflix/static/media/ico_search.b8cf9fad19462f7154fa283a4053de17.svg",
+    "static/media/ico_close.svg": "/betflix/static/media/ico_close.e20279ac4433a2ac04225d21f9064a29.svg",
+    "main.34ed79ad.js.map": "/betflix/static/js/main.34ed79ad.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.34ed79ad.js"
+  ]
+}
