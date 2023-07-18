@@ -72,7 +72,7 @@ function Slider({ offset, data }: SliderProps) {
   }
 
   const onClickItem = (movieId: number) => {
-    navigate(`movie/${movieId}`);
+    navigate(`movies/${movieId}`);
   }
 
   console.log(data);
