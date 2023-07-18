@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export const Wrap = styled.div`
   overflow-x: hidden;
   width: 100%;
-  min-height: 100vh;
+  min-height: 200vh;
   background: ${(props) => props.theme.bgColor.normal};
   color: ${(props) => props.theme.textColor.normal};
 `;
@@ -14,16 +14,16 @@ export const Wrap = styled.div`
 // -------------------- header --------------------
 export const HeaderWrap = styled(motion.header)`
   display: flex;
-  justify-content: space-beteen;  
   align-items: center;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 4.25rem;
-  padding: 0 2.5rem;
+  padding: 0 3.75rem;
   background: transparent;
-  transition: background-color 0.3s ease-out;
+  transition: background-color 0.2s ease-out;
+  z-index: 10;
 `;
 
 export const Logo = styled.h1`

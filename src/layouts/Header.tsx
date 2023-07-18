@@ -13,10 +13,10 @@ import * as S from "assets/styles/layoutStyle";
 
 const headerAniVariants = {
   top: {
-    backgroundColor: "rgba(0, 0, 0, 0)"
+    backgroundColor: "rgba(20, 20, 20, 0)"
   },
   scroll: {
-    backgroundColor: "rgba(0, 0, 0, 1)"
+    backgroundColor: "rgba(20, 20, 20, 1)"
   }
 }
 

@@ -3,9 +3,9 @@ import { useQuery } from "react-query";
 
 import Loader from "components/Loader";
 import Banner from "components/Banner";
+import Slider from "components/Slider";
 
 import { getMovies } from "api"
-import Slider from "components/Slider";
 
 function Home() {
   const { data, isLoading } = useQuery<IGetMoviesResult>(["movies", "nowPlaying"], getMovies);

@@ -1,9 +1,14 @@
 import { useEffect, useRef, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import * as S from "assets/styles/componentsStyle";
 
 function SearchBar() {
   const searchBarRef = useRef<HTMLDivElement>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [searchText, setSearchText] = useState<string>("");
@@ -29,14 +34,20 @@ function SearchBar() {
   }
 
   useEffect(() => {
-    if(!isOpen){
-      setSearchText("");
+    setSearchText("");
+    if(isOpen && searchInputRef.current){
+      searchInputRef.current.focus();
     }
-  }, [isOpen]);
+  }, [isOpen, searchInputRef]);
+
+  console.log(typeof location.pathname);
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent): void {
-      if(searchBarRef.current && !searchBarRef.current.contains(e.target as Node)){
+      if(searchBarRef.current 
+        && !searchBarRef.current.contains(e.target as Node)
+        && location.pathname === "/"
+      ){
         setIsOpen(false);
       }
     }
@@ -45,7 +56,16 @@ function SearchBar() {
     return() => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [searchBarRef]);
+  }, [searchBarRef, location]);
+
+  useEffect(() => {
+    if(searchText){
+      navigate(`result?keyword=${searchText}`);
+    }else{
+      navigate("/");
+      setIsOpen(false);
+    }
+  }, [searchText]);
 
   return (
     <S.SearchBarWrap ref={searchBarRef}>
@@ -59,11 +79,11 @@ function SearchBar() {
         />
       )}
       {searchText ? (
-        <S.DeleteBtn name="delete" onClick={onClickBtn}>
+        <S.DeleteBtn type="button" name="delete" onClick={onClickBtn}>
           <span className="hide">Delete</span>
         </S.DeleteBtn>
       ) : (
-        <S.SearchBtn name="search" $isOpen={isOpen} onClick={onClickBtn}>
+        <S.SearchBtn type="button" name="search" $isOpen={isOpen} onClick={onClickBtn}>
           <span className="hide">Search</span>
         </S.SearchBtn>
       )}

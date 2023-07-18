@@ -4,6 +4,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Wrapper from "layouts/Wrapper";
 import Home from "pages/Home";
 import Series from "pages/Series";
+import Result from "pages/Result";
 import NotFound from "pages/NotFound";
 
 const client = new QueryClient();
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/series",
         element: <Series />,
+      },
+      {
+        path: "/result",
+        element: <Result />,
       }
     ],
     errorElement: <NotFound />
