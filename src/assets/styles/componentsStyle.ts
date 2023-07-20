@@ -63,29 +63,42 @@ export const Banner = styled.div<{ $bgImg: string }>`
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  height: 100vh;
+  height: 50vw;
+  max-height: 100vh;
   padding: 0 3.75rem;
   background: linear-gradient(rgba(20, 20, 20, 0), rgba(20, 20, 20, 1)), url(${(props) => props.$bgImg}) center no-repeat;
   background-size: cover;
 `;
 
 export const BannerTitle = styled.h2`
-  margin-bottm: 1.25rem;
-  font-size: 4.25rem;
+  margin: 10rem 0 1.5rem;
+  font-size: 2.8rem;
 `;
 
 export const Overview = styled.div`
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden; 
   width: 50%;
-  font-size: 2.25rem;
+  font-size: 1.6rem;
+  white-space: normal;
 `;
 
 
 // -------------------- Slider --------------------
-export const SliderWrap = styled.div`
-  position: relative;
-  margin-top: -12.5rem;
+export const SliderTitle = styled.div`
   margin-bottom: 1.5rem;
   padding: 0 3.75rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+`;
+
+export const SliderWrap = styled.div`
+  position: relative;
+  margin-bottom: 1.5rem;
+  padding: 0 3.75rem;
+  height: 10vw;
 `;
 
 export const SlideRow = styled(motion.div)`
@@ -94,13 +107,14 @@ export const SlideRow = styled(motion.div)`
   gap: 0.7rem;
   position: absolute;
   width: calc(100% - 7.5rem);
+  height: 100%;
 `;
 
 export const SlideItem = styled(motion.div)<{ $bgImg: string }>`
   position: relative;
-  height: 400px;
+  height: 100%;
   border-radius: 0.17rem;
-  background: #000 url(${(props) => props.$bgImg}) center no-repeat;
+  background: #000 url(${(props) => props.$bgImg}) top center no-repeat;
   background-size: cover;
   cursor: pointer;
 

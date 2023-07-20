@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export const Wrap = styled.div`
   overflow-x: hidden;
   width: 100%;
-  min-height: 200vh;
+  min-height: 100vh;
   background: ${(props) => props.theme.bgColor.normal};
   color: ${(props) => props.theme.textColor.normal};
 `;

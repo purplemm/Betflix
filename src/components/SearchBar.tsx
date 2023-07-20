@@ -40,8 +40,6 @@ function SearchBar() {
     }
   }, [isOpen, searchInputRef]);
 
-  console.log(typeof location.pathname);
-
   useEffect(() => {
     function handleClickOutside(e: MouseEvent): void {
       if(searchBarRef.current 

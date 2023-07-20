@@ -10,6 +10,7 @@ import * as S from "assets/styles/componentsStyle";
 interface SliderProps {
   offset: number;
   data: IMovie[];
+  layoutId: string;
 }
 
 const slideRowVariants = {
@@ -51,11 +52,11 @@ const movieInfoVariants = {
   }
 }
 
-function Slider({ offset, data }: SliderProps) {
+function Slider({ offset, data, layoutId }: SliderProps) {
   const navigate = useNavigate();
   const moviesUrlMatch = useMatch("movies/:movieId");
 
-  const { data: movieInfo } = useQuery(["movie", [moviesUrlMatch?.params.movieId]], () => moviesUrlMatch?.params.movieId && getMovieInfo(+moviesUrlMatch?.params.movieId));
+  const { data: movieInfo } = useQuery(["movie", [moviesUrlMatch?.params.movieId]], () => moviesUrlMatch?.params.movieId && getMovieInfo(Number(moviesUrlMatch?.params.movieId.split("_")[1])));
 
   const [index, setIndex] = useState(0);
   const [leaving, setLeaving] = useState(false);
@@ -76,7 +77,8 @@ function Slider({ offset, data }: SliderProps) {
     setLeaving(!leaving);
   }
 
-  const onClickItem = (movieId: number) => {
+  const onClickItem = (movieId: string) => {
+    // const splitMovieId = Number(moviesUrlMatch?.params.movieId.split("_")[1]);
     navigate(`movies/${movieId}`);
   }
 
@@ -100,14 +102,14 @@ function Slider({ offset, data }: SliderProps) {
           >
             {data && data.slice(offset * index, offset * index + offset).map((item) => (
               <S.SlideItem 
-                layoutId={item.id + ""}
+                layoutId={`${layoutId}_${item.id}`}
                 key={item.id} 
                 $bgImg={makeImgPath(item.poster_path, "w500")} 
                 variants={slideItemVariants}
                 initial="normal"
                 whileHover="hover"
                 transition={{type: "tween"}}
-                onClick={() => onClickItem(item.id)}
+                onClick={() => onClickItem(`${layoutId}_${item.id}`)}
               >
                 <S.MovieInfo variants={movieInfoVariants}>
                   {item.title}
@@ -118,11 +120,11 @@ function Slider({ offset, data }: SliderProps) {
         </AnimatePresence>
       </S.SliderWrap>
 
-      {/* <AnimatePresence> */}
+      <AnimatePresence>
         {moviesUrlMatch && (
           <>
             <S.Backdrop onClick={handleCloseModal} animate={{opacity: 1}} />
-            <S.DetailModal layoutId={moviesUrlMatch.params.movieId}>
+            <S.DetailModal layoutId={`${layoutId}_${moviesUrlMatch.params.movieId}`}>
               {movieInfo && (
                 <div className="modalWrap">
                   <button type="button" className="btnClose" onClick={handleCloseModal}>
@@ -137,7 +139,7 @@ function Slider({ offset, data }: SliderProps) {
             </S.DetailModal>    
           </>
         )}
-      {/* </AnimatePresence> */}
+      </AnimatePresence>
     </>
   )
 }

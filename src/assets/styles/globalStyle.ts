@@ -1,6 +1,78 @@
 import { createGlobalStyle } from 'styled-components';
 
+import NotoSansKRThinWoff from '../fonts/NotoSansKR-Thin.woff';
+import NotoSansKRThinWoff2 from '../fonts/NotoSansKR-Thin.woff2';
+import NotoSansKRLightWoff from '../fonts/NotoSansKR-Light.woff';
+import NotoSansKRLightWoff2 from '../fonts/NotoSansKR-Light.woff2';
+import NotoSansKRDemiLightWoff from '../fonts/NotoSansKR-DemiLight.woff';
+import NotoSansKRDemiLightWoff2 from '../fonts/NotoSansKR-DemiLight.woff2';
+import NotoSansKRRegularWoff from '../fonts/NotoSansKR-Regular.woff';
+import NotoSansKRRegularWoff2 from '../fonts/NotoSansKR-Regular.woff2';
+import NotoSansKRMediumWoff from '../fonts/NotoSansKR-Medium.woff';
+import NotoSansKRMediumWoff2 from '../fonts/NotoSansKR-Medium.woff2';
+import NotoSansKRBoldWoff from '../fonts/NotoSansKR-Bold.woff';
+import NotoSansKRBoldWoff2 from '../fonts/NotoSansKR-Bold.woff2';
+import NotoSansKRBlackWoff from '../fonts/NotoSansKR-Black.woff';
+import NotoSansKRBlackWoff2 from '../fonts/NotoSansKR-Black.woff2';
+
 export const GlobalStyle = createGlobalStyle`
+  /* Noto Sans */
+  @font-face {
+      font-family:'Noto Sans KR';
+      font-style:normal;
+      font-weight:100;
+      src:local('Noto Sans KR Thin'), local('NotoSansKR-Thin'), 
+      url(${NotoSansKRThinWoff}) format('woff'),
+      url(${NotoSansKRThinWoff2}) format('woff2');
+  }
+  @font-face {
+      font-family:'Noto Sans KR';
+      font-style:normal;
+      font-weight:200;
+      src:local('Noto Sans KR Light'), local('NotoSansKR-Light'), 
+      url(${NotoSansKRLightWoff}) format('woff'),
+      url(${NotoSansKRLightWoff2}) format('woff2');
+  }
+  @font-face {
+      font-family:'Noto Sans KR';
+      font-style:normal;
+      font-weight:300;
+      src:local('Noto Sans KR DemiLight'), local('NotoSansKR-DemiLight'), 
+      url(${NotoSansKRDemiLightWoff}) format('woff'),
+      url(${NotoSansKRDemiLightWoff2}) format('woff2');
+  }
+  @font-face {
+      font-family:'Noto Sans KR';
+      font-style:normal;
+      font-weight:400;
+      src:local('Noto Sans KR Regular'), local('NotoSansKR-Regular'), 
+      url(${NotoSansKRRegularWoff}) format('woff'),
+      url(${NotoSansKRRegularWoff2}) format('woff2');
+  }
+  @font-face {
+      font-family:'Noto Sans KR';
+      font-style:normal;
+      font-weight:500;
+      src:local('Noto Sans KR Medium'), local('NotoSansKR-Medium'),
+      url(${NotoSansKRMediumWoff}) format('woff'),
+      url(${NotoSansKRMediumWoff2}) format('woff2');
+  }
+  @font-face {
+      font-family:'Noto Sans KR';
+      font-style:normal;
+      font-weight:700;
+      src:local('Noto Sans KR Bold'), local('NotoSansKR-Bold'), 
+      url(${NotoSansKRBoldWoff}) format('woff'),
+      url(${NotoSansKRBoldWoff2}) format('woff2');
+  }
+  @font-face {
+      font-family:'Noto Sans KR';
+      font-style:normal;
+      font-weight:900;
+      src:local('Noto Sans KR Black'), local('NotoSansKR-Black'), 
+      url(${NotoSansKRBlackWoff}) format('woff'),
+      url(${NotoSansKRBlackWoff2}) format('woff2');
+  }
   * {
     box-sizing: border-box;
   }
@@ -21,7 +93,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     border: 0;
     font-size: 100%;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
     vertical-align: baseline;
   }
   /* HTML5 display-role reset for older browsers */
